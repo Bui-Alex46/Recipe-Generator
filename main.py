@@ -2,22 +2,11 @@ from flask import Flask, render_template, request
 import pandas as pd
 import random
 
-app = Flask(__name__)
-
-
-@app.route('/')
-def welcome():
-    return render_template('index.html')
-
 print('python file working')
 
 #data = pd.read_csv('/Users/harshuljain/Desktop/dataset') path to csv file for harshul
 
 df = pd.read_csv('/Users/harshuljain/Desktop/dataset/full_dataset.csv')
-
-import pandas as pd
-
-# Load the data
 
 
 def get_recipes_with_ingredients(df, ingredients):
@@ -56,3 +45,17 @@ recipe_number = int(input("\nEnter the number of the recipe you want to make: ")
 chosen_recipe = recipes.iloc[recipe_number]
 print("\nHere are the instructions for your chosen recipe:\n")
 print(chosen_recipe['directions'])
+
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def welcome():
+    return render_template('index.html')
+
+@app.route('/submit', methods = ['POST', 'GET'])
+def submit():
+    if request.method == 'POST':
+        string = request.form('ingredients')
+        return render_template('got.html', shit=string)

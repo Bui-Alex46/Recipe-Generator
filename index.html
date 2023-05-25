@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Recipie Generator</title>
-</head>
+<html>
 <body>
-    <h1>Hello World!</h1>
-    <h2>This is a test</h2>
+
+<form action="/submit" method='post'>
+  <label for="ingredients">What ingredients do you have? (separate by comma please) </label><br>
+  <input type="text" id="ingredients" name="ing" placeholder="Onions, Tomato, Beef" required><br>
+  <br><br>
+  <input type="submit" value="Submit">
+</form>
+
 </body>
 </html>
